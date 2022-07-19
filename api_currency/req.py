@@ -1,37 +1,58 @@
 import requests
 from config_cur import *
-from datetime import datetime
+#from datetime import datetime
 import time
-  
-# ts stores the time in seconds
-ts = time.time()
-  
-# print the current timestamp
-print(ts * 1000)
+import json
 
-DEMO_URL = 'https://demo-api-adapter.backend.currency.com'
+##milliseconds = int(round(time.time() * 1000))
+##print(milliseconds)
+#
+#DEMO_URL = 'https://demo-api-adapter.backend.currency.com'
+#
+## date in string format
+##now = '19.07.2022 12:55:46'
+### convert to datetime instance
+##date_time = datetime.strptime(now, '%d.%m.%Y %H:%M:%S')
+##print(date_time)
+#
+## timestamp in milliseconds
+##ts = date_time.timestamp() * 1000
+##print(ts)
+#
+#response = requests.get(DEMO_URL + '/api/v1/time')
+#print(response.json()['serverTime'])
+#
+#
+#session = requests.Session()
+#session.headers['X-MBX-APIKEY'] = API_KEY
+#
+#response = session.get(
+#    DEMO_URL + '/api/v1/account',
+#    params={
+#        'timestamp': response.json()['serverTime'],
+#        'signature': 'a4b7e86ecab58df131f5bc7e96049b9ae9be35936400c0bc664079886febafae'}
+#        )
+#
+#print(response.json())
 
-# date in string format
-#now = '19.07.2022 12:55:46'
-## convert to datetime instance
-#date_time = datetime.strptime(now, '%d.%m.%Y %H:%M:%S')
-#print(date_time)
 
-# timestamp in milliseconds
-#ts = date_time.timestamp() * 1000
-#print(ts)
+import hmac
+import hashlib
 
-response = requests.get(DEMO_URL + '/api/v1/time')
-print(type(response.json()['serverTime']))
+secret_key = bytes(secret_key,encoding='utf-8')
+session = requests.Session()
 
-response = requests.get(
-    DEMO_URL + '/api/v1/account',
-    headers={'X-MBX-APIKEY': API_KEY},
-    params={
-        'timestamp': response.json()['serverTime'],
-        'signature': '91a1844732201ac7900dd490e15b27b2a5338b0a2293fbb3ef468b8e2ec3f497'}
-        )
+URL = "account"
+timestamp = int(time.time() * 1000)
+recvWindow = "5000"
+params = "timestamp=" + str(timestamp) + "&recvWindow=" + recvWindow
+sign = hmac.new(secret_key, params.encode('utf-8'), hashlib.sha256).hexdigest()
+params = params + "&signature=" + sign
 
-print(response.json())
+response = session.get(
+    'https://demo-api-adapter.backend.currency.com/api/v1/' + URL + '?' + params,
+    headers={'X-MBX-APIKEY': API_KEY }
 
-
+    )
+data = json.loads(response.text)
+print(data)
