@@ -1,15 +1,20 @@
-from urllib import response
 import requests
-from config import API_KEY, username, password
+from config_cur import *
+from datetime import datetime
 
-URL = 'https://api-adapter.backend.currency.com/'
+DEMO_URL = 'https://demo-api-adapter.backend.currency.com'
 
-session = requests.Session()
-session.headers['X-MBX-APIKEY'] = API_KEY
+# date in string format
+now = '19.07.2022 12:55:46'
+# convert to datetime instance
+date_time = datetime.strptime(now, '%d.%m.%Y %H:%M:%S')
+print(date_time)
 
-#response = session.get(
-#    URL + '/api/v1/account',
-#)
-#
-#print(response.status_code)
+# timestamp in milliseconds
+ts = date_time.timestamp() * 1000
+print(ts)
+
+response = requests.get(DEMO_URL + '/api/v1/time')
+print(response.text)
+
 

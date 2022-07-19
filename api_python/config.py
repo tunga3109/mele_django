@@ -1,4 +1,0 @@
-API_KEY = 'KavXLfw8sJ1s2KzU' #expired 24 hours
-username = 'tunga3109@gmail.com'
-password = 'Xuxin_1003199954321'
-#password = 'RK8+piTdbo2oA7KRQI/OGAJpDOC8YFlHKT0Alu+Gu3qQSQEQmyroy5+tqWchFjRZA2Ev6wwdDk0tIVOq2CjvOO9aJQcd08cP6xm8L9XqdqNd6N6RnHqGbEpemTHQcvx6wxE2SSkcbQhC47EhA6f7/AkUJCPE07Xi9Y9qDVyDDUbOgJLJunBMJAaGkTNsnA/fQCPs4IR37bxlrgXJsBtFscEufSwpBllXMzWwxHC/L5OaVA/zmSWKpfvtSfrWtwyoywD+9JV6nJGzsm1ocVd4fnsK7YJTR+IeCI6yZodQzuCXcOQH7kl0Ijozd7MI21xq4aLQMJQ9K9G6Ne3H4KbUWQ=='
