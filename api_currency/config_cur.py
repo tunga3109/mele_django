@@ -1,2 +1,2 @@
-API_KEY = 'YFPGYTwRtRK8GVuE'
-secret_key = 'n:ywt2A%=WfuBZ!0c&ilATmo0:B12YMI'
+API_KEY = 'k2uvytVdpZmNz8Po'
+secret_key = 'K&TGw7/SVR^~ajf_jw@OO6gtQNj-2JY^'
